@@ -1,5 +1,9 @@
 import axios from 'axios';
 import type { Movie } from "../types/movie";
+const TOKEN = import.meta.env.VITE_TMDB_TOKEN;
+if (!TOKEN) {
+  throw new Error("TMDB token is missing");
+}
 
 interface FetchMoviesResponse {
   results: Movie[];
@@ -13,7 +17,7 @@ export const fetchMovies = async (query: string): Promise<Movie[]> => {
       query,
     },
     headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjM3YTE0YTJmOGRhMmQxNzEwYjk4MjhkYWI2ZDE1YSIsIm5iZiI6MTc3NzkyMDc2NS43MjYsInN1YiI6IjY5ZjhlYWZkMzIzNTAwYmUzMWRmNTgxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LEmvvDxuN5IOCLLTIXLVnfSqmPHaecrzCClZtzRJBvA`,
+      Authorization: `Bearer ${TOKEN}`,
     },
   });
 

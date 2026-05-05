@@ -10,15 +10,15 @@ export default function MovieGrid({ movies, onSelect }: MovieGridProps) {
     return (
         <ul className={css.grid}>
             {movies.map((movie) => (
-                <li> key = { movie.id }
+                <li key = { movie.id }>
                     <div className={css.card} onClick={() => onSelect(movie)}>
-                     <img
-                        className={css.image}
-                        src="https://image.tmdb.org/t/p/w500/poster-path"
-                        alt="movie title"
+                        <img
+                            className={css.image}
+                            src={'https://image.tmdb.org/t/p/w500${movie.poster_path}'}
+                            alt={'movie.title'}
                         loading="lazy"
                     />
-                    <h2 className={css.title}>Movie title</h2>
+                        <h2 className={css.title}>{movie.title}</h2>
                      </div>
                  </li>
     ))
